@@ -18,7 +18,7 @@ function App() {
   return (
     <>
       <Navbar />
-      <div className='px-2 laptop:px-0'>
+      <div className='px-5 mx-auto absolute overflow-x-hidden w-full laptop:px-0'>
         {components}
       </div>
     </>

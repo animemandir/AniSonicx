@@ -5,6 +5,9 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+     fontFamily: {
+      'pathway': ['Pathway Gothic One', 'sans-serif'],
+    },
     extend: {},
     screens: {
       'mobile': '320px',

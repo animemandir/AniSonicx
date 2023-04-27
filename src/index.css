@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@200;300;400;600&family=Montserrat:wght@100;200;300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@200;300;400;600&family=Montserrat:wght@100;200;300;400;500;600;700&display=swap&family=Pathway+Gothic+One&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -7,7 +7,7 @@
   font-family: 'Fira Sans', Montserrat, Roboto, Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   font-weight: 400;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: #1A1A1A;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -16,7 +16,36 @@
 
 #root {
   max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+}
+
+::-webkit-scrollbar {
+  width: 8.7px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background: rgb(44, 44, 44);
+}
+
+::-webkit-scrollbar-track {
+  background: black;
+}
+
+#gradient {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  box-shadow: 50px 0 100px 50px #14151a inset ;
+  z-index: 1;
+}
+
+@media only screen and (max-width: 760px) and (min-width: 480px){
+#gradient {
+  box-shadow: 40px -20px 100px 50px #14151a inset;
+}
+}
+@media only screen and (max-width: 480px){
+#gradient {
+  box-shadow: 20px -20px 80px 40px #14151a inset;
+}
 }

@@ -1,5 +1,5 @@
 const QUERIES = {
-    TRENDING: `query {
+  TRENDING: `query {
         Page(page: 1,perPage: 8) {
         media(type: ANIME,sort : TRENDING_DESC) {
         id
@@ -14,10 +14,16 @@ const QUERIES = {
         medium
         }
         averageScore
+        popularity
+        trending
+        status
+        type
+        format
+        genres
         }
         }
         }`,
-    POPULAR: `query {
+  POPULAR: `query {
         Page(page: 1, perPage: 15) {
     media(type: ANIME,sort : POPULARITY_DESC) {
     id
@@ -25,32 +31,42 @@ const QUERIES = {
     romaji
     english
     }
+    coverImage{
+      extraLarge
+    large
+    }
     description
-    coverImage{
-    large
-    medium
-    }
     averageScore
+    popularity
+    bannerImage
+    trailer {
+      id
+    }
     }
     }
     }`,
-    RECENT: `query {
-        Page(page: 1, perPage: 15) {
-    media(type: ANIME,sort : START_DATE_DESC) {
-    id
-    title{
-    romaji
-    english
+  RECENT: `query {
+      Page(page: 1, perPage: 10) {
+        media(status: RELEASING, sort: POPULARITY_DESC, type: ANIME) {
+          id
+          title {
+            romaji
+            english
+            native
+          }
+          coverImage {
+            extraLarge
+          }
+          genres
+          averageScore
+          format
+        }
+      }
     }
-    coverImage{
-    large
-    medium
-    }
-    averageScore
-    }
-    }
-    }`,
-    ACTION: `query {
+    
+      
+      `,
+  ACTION: `query {
         Page(page: 1, perPage: 15) {
     media(type: ANIME,genre: "Action", sort: POPULARITY_DESC) {
     id
@@ -63,10 +79,15 @@ const QUERIES = {
     medium
     }
     averageScore
+    popularity
+    type
+    status
+    genres
+    description
     }
     }
     }`,
-    DRAMA: `query {
+  DRAMA: `query {
         Page(page: 1, perPage: 15) {
     media(type: ANIME,genre: "Drama", sort: POPULARITY_DESC) {
     id
@@ -79,10 +100,15 @@ const QUERIES = {
     medium
     }
     averageScore
+    popularity
+    type
+    status
+    genres
+    description
     }
     }
     }`,
-    ADVENTURE: `query {
+  ADVENTURE: `query {
         Page(page: 1, perPage: 15) {
     media(type: ANIME,genre: "Adventure", sort: POPULARITY_DESC) {
     id
@@ -95,19 +121,24 @@ const QUERIES = {
     medium
     }
     averageScore
+    popularity
+    type
+    status
+    genres
+    description
     }
     }
     }`,
 }
 
 const API_CALLS = {
-    GET_INFO: (id, dub) => `info/${id}?dub=${dub}`,
-    STREAM: (id) => `watch/${id}`
+  GET_INFO: (id, dub) => `info/${id}?dub=${dub}`,
+  STREAM: (id) => `watch/${id}`
 }
 
 const ENDPOINTS = {
-    GRAPHQL: import.meta.env.VITE_ANILIST_GRAPHQL_URL ,
-    CONSUMET: import.meta.env.VITE_ANILIST_CONSUMET_URL 
+  GRAPHQL: import.meta.env.VITE_ANILIST_GRAPHQL_URL,
+  CONSUMET: import.meta.env.VITE_ANILIST_CONSUMET_URL
 }
 
 export default { QUERIES, API_CALLS, ENDPOINTS }
